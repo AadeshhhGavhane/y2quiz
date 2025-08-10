@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Quiz Generator</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="title-section">
+                <div class="ascii-title">
+██╗   ██╗██████╗  ██████╗ ██╗   ██╗██╗███████╗
+╚██╗ ██╔╝╚════██╗██╔═══██╗██║   ██║██║╚══███╔╝
+ ╚████╔╝  █████╔╝██║   ██║██║   ██║██║  ███╔╝ 
+  ╚██╔╝  ██╔═══╝ ██║▄▄ ██║██║   ██║██║ ███╔╝  
+   ██║   ███████╗╚██████╔╝╚██████╔╝██║███████╗
+   ╚═╝   ╚══════╝ ╚══▀▀═╝  ╚═════╝ ╚═╝╚══════╝
+                </div>
+                <p class="tagline">Transform YouTube videos into interactive quizzes</p>
+            </div>
+            <button id="themeToggle" class="theme-toggle">
+                <span class="theme-icon">☀️</span>
+            </button>
+        </div>
+    </header>
+    
+    <main class="container">
+        
+        <div class="url-input-section">
+            <form id="urlForm">
+                <div class="input-group">
+                    <input type="url" 
+                           id="videoUrl" 
+                           placeholder="Enter YouTube video URL" 
+                           required>
+                    <button type="submit">Generate Quiz</button>
+                </div>
+            </form>
+            <div id="loadingTooltip" class="loading-tooltip">
+                <div class="loading-content">
+                    <div class="loading-icon" id="loadingIcon"></div>
+                    <span class="loading-text" id="loadingText">Processing...</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="loadingIndicator" class="loading-indicator hidden">
+            <!-- Loading content will be dynamically inserted -->
+        </div>
+
+        <div id="quizContainer" class="quiz-container hidden">
+            <!-- Quiz will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+</body>
+</html> 
