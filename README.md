@@ -1,175 +1,259 @@
-# YouTube Quiz Generator
+# Y2Quiz 🎯
 
-A Node.js application that generates interactive quizzes from YouTube video subtitles using AI.
+> Transform YouTube videos into interactive quizzes with AI-powered question generation
 
-## Features
+A modern, responsive web application that extracts subtitles from YouTube videos and uses Google Gemini 2.5 Flash to generate engaging multiple-choice quizzes. Features a beautiful dark/light theme toggle, mobile-first design, and an intuitive single-question quiz interface.
 
-- 🎥 Extract subtitles from any YouTube video
-- 🤖 Generate intelligent quizzes using Google's Gemini AI
-- 🌙 Dark/Light theme support
-- 📱 Mobile-first responsive design
-- ⭐ Real-time feedback and scoring
-- 📊 Grade calculation with detailed feedback
+## ✨ Features
 
-## Tech Stack
+### 🎨 **Modern UI/UX**
+- **Cool ASCII Art Header**: Block-style "Y2QUIZ" with glowing neon effects
+- **Dark/Light Theme Toggle**: Seamless theme switching with persistent preferences
+- **Responsive Design**: Mobile-first approach that works perfectly on all devices
+- **Smooth Animations**: Fade-in/up animations, hover effects, and loading states
 
-- **Backend**: Node.js, Express, TypeScript
-- **Frontend**: HTML, CSS, JavaScript
-- **AI**: Google Gemini 2.5 Flash
-- **Video Processing**: yt-dlp via yt-dlp-wrap
-- **Styling**: CSS with CSS Variables for theming
+### 🎯 **Quiz Experience**
+- **Single Question View**: Navigate through questions one at a time for better focus
+- **Interactive Question Grid**: Visual progress indicator with question navigation
+- **Smart Navigation**: Previous/Next buttons with intelligent state management
+- **Real-time Progress**: Visual progress bar and question status indicators
 
-## Prerequisites
+### 🚀 **Advanced Functionality**
+- **Asynchronous Processing**: Background task processing with real-time status updates
+- **Smart Polling**: Intelligent backend polling with rate limiting and backoff
+- **URL Cleaning**: Automatic YouTube URL normalization and validation
+- **Robust Error Handling**: Comprehensive error handling with user-friendly messages
 
-- Node.js (v14 or higher)
+### 📊 **Results & Analytics**
+- **Detailed Score Summary**: Comprehensive performance breakdown
+- **Question Review**: Review all questions with correct/incorrect indicators
+- **Performance Metrics**: Score, percentage, and detailed statistics
+- **Retake Functionality**: Easy quiz retaking for practice
+
+## 🛠️ Technology Stack
+
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript
+- **Backend**: Node.js, Express.js, TypeScript
+- **AI Integration**: Google Gemini 2.5 Flash API
+- **Video Processing**: yt-dlp-wrap for subtitle extraction
+- **Styling**: CSS Variables, Flexbox, CSS Grid, Modern CSS features
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v16 or higher)
 - npm or yarn
 - Google Gemini API key
-- yt-dlp (automatically downloaded or use system installation)
+- yt-dlp binary (optional - will auto-download if not found)
 
-## Installation
+### Installation
 
-1. Clone the repository:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/AadeshhhGavhane/y2quiz
+   cd y2quiz
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edit `.env` and add your Gemini API key:
+   ```env
+   PORT=3000
+   GEMINI_API_KEY=your_actual_gemini_api_key_here
+   ```
+
+4. **Start the application**
+   ```bash
+   # Development mode
+   npm run dev
+   
+   # Production build
+   npm run build
+   npm start
+   ```
+
+5. **Open your browser**
+   Navigate to `http://localhost:3000`
+
+## 📱 Usage
+
+### 1. **Enter YouTube URL**
+- Paste any YouTube video URL in the input field
+- The app automatically cleans and normalizes the URL
+- Click "Generate Quiz" to start processing
+
+### 2. **AI Processing**
+- **Subtitle Extraction**: Downloads and processes video subtitles
+- **Transcript Cleaning**: Removes timestamps, HTML tags, and duplicates
+- **Quiz Generation**: AI creates 10 multiple-choice questions
+- **Real-time Updates**: Monitor progress with animated loading states
+
+### 3. **Take the Quiz**
+- **Single Question View**: Focus on one question at a time
+- **Question Navigation**: Use the grid or Previous/Next buttons
+- **Answer Selection**: Click options to select your answers
+- **Progress Tracking**: Visual indicators show completion status
+
+### 4. **Review Results**
+- **Score Summary**: See your performance at a glance
+- **Detailed Review**: Review each question with correct answers
+- **Performance Metrics**: Understand your strengths and areas for improvement
+- **Retake Option**: Practice again with the same questions
+
+## 🎨 Customization
+
+### Theme Variables
+The app uses CSS custom properties for easy theming:
+
+```css
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --accent-color: #2563eb;
+    --text-primary: #333333;
+    /* ... more variables */
+}
+```
+
+### ASCII Art Header
+Customize the ASCII art title in `src/public/index.html`:
+
+```html
+<div class="ascii-title">
+██╗   ██╗██████╗  ██████╗ ██╗   ██╗██╗███████╗
+╚██╗ ██╔╝╚════██╗██╔═══██╗██║   ██║██║╚══███╔╝
+ ╚████╔╝  █████╔╝██║   ██║██║   ██║██║  ███╔╝ 
+  ╚██╔╝  ██╔═══╝ ██║▄▄ ██║██║   ██║██║ ███╔╝  
+   ██║   ███████╗╚██████╔╝╚██████╔╝██║███████╗
+   ╚═╝   ╚══════╝ ╚══▀▀═╝  ╚═════╝ ╚═╝╚══════╝
+</div>
+```
+
+## 🔧 Configuration
+
+### Backend Settings
+- **Port**: Configure server port in `.env`
+- **Rate Limiting**: Adjust polling intervals and request limits
+- **Task Cleanup**: Configure automatic cleanup of old tasks
+
+### Frontend Settings
+- **Polling Intervals**: Customize status check timing
+- **Animation Durations**: Adjust CSS transition timings
+- **Responsive Breakpoints**: Modify mobile/tablet breakpoints
+
+## 📁 Project Structure
+
+```
+y2quiz/
+├── src/
+│   ├── public/           # Frontend assets
+│   │   ├── index.html    # Main HTML file
+│   │   ├── css/          # Stylesheets
+│   │   └── js/           # Frontend JavaScript
+│   ├── routes/           # API route handlers
+│   ├── services/         # Business logic
+│   └── server.ts         # Express server setup
+├── .env                  # Environment variables
+├── package.json          # Dependencies and scripts
+└── tsconfig.json         # TypeScript configuration
+```
+
+## 🚀 Development
+
+### Available Scripts
 ```bash
-git clone <repository-url>
-cd y2quiz
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run watch    # Watch mode for TypeScript
 ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+### Key Components
 
-3. Create environment file:
-```bash
-cp .env.example .env
-```
+#### **YouTube Service** (`src/services/youtube.service.ts`)
+- Handles subtitle extraction using yt-dlp
+- Processes and cleans transcript content
+- Supports multiple subtitle formats
 
-4. Add your Gemini API key to `.env`:
-```env
-PORT=3000
-GEMINI_API_KEY=your_actual_gemini_api_key_here
-```
+#### **Gemini Service** (`src/services/gemini.service.ts`)
+- Integrates with Google Gemini 2.5 Flash
+- Generates structured quiz questions
+- Handles AI response parsing and validation
 
-## Getting Your Gemini API Key
+#### **Quiz Routes** (`src/routes/quiz.routes.ts`)
+- Manages asynchronous quiz generation
+- Implements rate limiting and task management
+- Provides real-time status updates
 
-1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Sign in with your Google account
-3. Create a new API key
-4. Copy the API key to your `.env` file
+#### **Frontend Logic** (`src/public/js/main.js`)
+- Handles theme switching and UI interactions
+- Manages quiz navigation and state
+- Implements intelligent polling and error handling
 
-## Usage
+## 🎯 Features in Detail
 
-1. Start the development server:
-```bash
-npm run dev
-```
+### **Asynchronous Processing**
+- **Task Management**: Unique IDs for each quiz generation
+- **Status Polling**: Real-time progress updates with smart backoff
+- **Rate Limiting**: Prevents backend overload with intelligent throttling
+- **Error Recovery**: Automatic retry mechanisms and graceful degradation
 
-2. Open your browser and navigate to `http://localhost:3000`
+### **Mobile-First Design**
+- **Responsive Layout**: Adapts seamlessly to all screen sizes
+- **Touch-Friendly**: Optimized for mobile interactions
+- **Performance**: Fast loading and smooth animations
+- **Accessibility**: Keyboard navigation and screen reader support
 
-3. Enter a YouTube video URL and click "Generate Quiz"
+### **Quiz Interface**
+- **Question Grid**: Visual navigation with status indicators
+- **Progress Tracking**: Real-time completion status
+- **Answer Validation**: Immediate feedback and correction
+- **Results Summary**: Comprehensive performance analysis
 
-4. Answer the generated questions and submit for scoring
+## 🔒 Security & Performance
 
-## API Endpoints
+### **Security Features**
+- Environment variable protection
+- Input validation and sanitization
+- Rate limiting and request throttling
+- Secure API key management
 
-- `GET /` - Serve the main application
-- `POST /api/quiz/generate` - Generate quiz from YouTube URL
-- `POST /api/youtube/extract-subtitles` - Extract subtitles only
+### **Performance Optimizations**
+- Asynchronous processing
+- Intelligent polling with backoff
+- Efficient DOM manipulation
+- CSS animations and transitions
+- Responsive image loading
 
-## Project Structure
-
-```
-src/
-├── public/
-│   ├── css/
-│   │   └── styles.css       # Responsive styling with themes
-│   ├── js/
-│   │   └── main.js          # Frontend JavaScript
-│   └── index.html           # Main HTML template
-├── routes/
-│   ├── quiz.routes.ts       # Quiz generation endpoints
-│   └── youtube.routes.ts    # YouTube processing endpoints
-├── services/
-│   ├── gemini.service.ts    # Gemini AI integration
-│   └── youtube.service.ts   # yt-dlp subtitle extraction
-└── server.ts                # Express server setup
-```
-
-## Features in Detail
-
-### Subtitle Extraction
-- Supports both manual and auto-generated subtitles
-- Handles multiple language variants (en, en-US, en-GB)
-- Processes both VTT and SRT formats
-- Automatic cleanup and text processing
-
-### Quiz Generation
-- 10 multiple-choice questions per video
-- AI-powered content analysis
-- Structured JSON response validation
-- Error handling and retry logic
-
-### User Interface
-- Clean, modern design
-- Dark/light theme toggle
-- Mobile-responsive layout
-- Progress tracking
-- Real-time feedback
-- Grade calculation with motivational messages
-
-## Development Scripts
-
-```bash
-npm run dev      # Start development server with ts-node
-npm run build    # Compile TypeScript to JavaScript
-npm run start    # Run compiled JavaScript
-npm run watch    # Watch for TypeScript changes
-```
-
-## Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `PORT` | Server port number | No (defaults to 3000) |
-| `GEMINI_API_KEY` | Google Gemini API key | Yes |
-
-## Error Handling
-
-The application includes comprehensive error handling for:
-- Invalid YouTube URLs
-- Missing subtitles
-- API rate limits
-- Network failures
-- Invalid quiz responses
-
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## License
+## 📄 License
 
-This project is licensed under the ISC License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Troubleshooting
+## 🙏 Acknowledgments
 
-### yt-dlp Issues
-- The app automatically downloads yt-dlp binary
-- For faster startup, install yt-dlp system-wide: `pip install yt-dlp`
+- **yt-dlp** for subtitle extraction capabilities
+- **Google Gemini** for AI-powered quiz generation
+- **Express.js** for the robust backend framework
+- **Modern CSS** for beautiful, responsive design
 
-### API Key Issues
-- Ensure your Gemini API key is valid and has quota
-- Check that the `.env` file is in the project root
-- Verify the environment variables are loading correctly
+---
 
-### Subtitle Extraction Issues
-- Some videos may not have English subtitles
-- Private or restricted videos cannot be processed
-- Very long videos may take more time to process
+**Made with ❤️ for interactive learning**
 
-## Support
-
-For issues and questions, please check the troubleshooting section or create an issue in the repository. 
+Transform any YouTube video into an engaging quiz experience in seconds! 🎯✨ 
